@@ -13,5 +13,18 @@ router.get('/selectAll', (req, res, next) => {
     })
 })
 
+router.post('/insert', (req, res, next) => {
+    console.log("accessing user insert")
+    UserCtrl.insert(req, res, next)
+    .then(user => {
+        res.status(200).json(user)
+    })
+    .catch(err => {
+        res.status(505).json(err)
+    })
+})
+
+
+
 module.exports = router
 
