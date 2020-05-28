@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const UserCtrl = require('../controllers/UserCtrl')
+const auth = require('../middleware/auth').auth
 
-
-router.get('/selectAll', (req, res, next) => {
+router.get('/selectAll', auth, (req, res, next) => {
     UserCtrl.selectAll(req, res, next)
     .then(users => {
         res.status(200).json(users)
@@ -13,7 +13,7 @@ router.get('/selectAll', (req, res, next) => {
     })
 })
 
-router.post('/insert', (req, res, next) => {
+router.post('/insert', auth, (req, res, next) => {
     console.log("accessing user insert")
     UserCtrl.insert(req, res, next)
     .then(user => {

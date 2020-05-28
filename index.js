@@ -8,10 +8,12 @@ require('./utils/database/database')
 
 //IMPORT ROUTERS
 const UserRouter = require('./routes/UserRouter')
+const ClassRouter = require('./routes/ClassRouter')
+const UserAuthRouter = require('./routes/UserAuthRoute')
 
 //USING OUR ROUTES
 app.use('/user', UserRouter)
-
-
+app.use('/class', ClassRouter)
+app.use('/userAuth', UserAuthRouter)
 
 module.exports = app

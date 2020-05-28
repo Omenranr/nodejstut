@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const ClassCtrl = require('../controllers/ClassCtrl')
+const auth = require('../middleware/auth').auth
 
-
-router.get('/selectAll', (req, res, next) => {
+router.get('/selectAll', auth, (req, res, next) => {
     ClassCtrl.selectAll(req, res, next)
     .then(classrooms => {
         res.status(200).json(classrooms)
@@ -13,7 +13,7 @@ router.get('/selectAll', (req, res, next) => {
     })
 })
 
-router.post('/insert', (req, res, next) => {
+router.post('/insert', auth, (req, res, next) => {
     console.log("accessing class insert")
     ClassCtrl.insert(req, res, next)
     .then(classroom => {
