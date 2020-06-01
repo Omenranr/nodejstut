@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const UserAuth = require('../utils/authentication/UserAuthentication')
-
+const mailSender = require('../playGround/sendMail')
 const auth = require('../middleware/auth').auth
 
 
@@ -65,6 +65,14 @@ router.get('/getUser', auth, (req, res, next) => {
     .catch(err => {
         console.log("get user error", err)
         res.json(err)
+    })
+})
+
+router.post('/sendToUserMail', auth, (req, res, next) => {
+    let data = req.body.data
+    mailSender(data.name, data.mail, data.subject, data.message)
+    .then(res => {
+        console.log(res)
     })
 })
 

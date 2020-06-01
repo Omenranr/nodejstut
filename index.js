@@ -10,10 +10,11 @@ require('./utils/database/database')
 const UserRouter = require('./routes/UserRouter')
 const ClassRouter = require('./routes/ClassRouter')
 const UserAuthRouter = require('./routes/UserAuthRoute')
-
+const WeatherRouter = require('./weather/WeatherRoute')
 //USING OUR ROUTES
 app.use('/user', UserRouter)
 app.use('/class', ClassRouter)
 app.use('/userAuth', UserAuthRouter)
+app.use('/weather', WeatherRouter)
 
 module.exports = app

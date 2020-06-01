@@ -3,6 +3,7 @@ const User = require('../models/User')
 
 // SELECT, UPDATE, INSERT, DELETE, selectByName
 
+
 exports.selectAll = (req, res, next) => {
     return new Promise((resolve, reject) => {
         User.find()
@@ -15,6 +16,8 @@ exports.selectAll = (req, res, next) => {
             })
     })
 }
+
+
 
 exports.insert = (req, res, next) => {
     return new Promise((resolve, reject) => {
