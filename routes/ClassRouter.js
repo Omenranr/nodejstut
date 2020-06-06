@@ -13,6 +13,20 @@ router.get('/selectAll', auth, (req, res, next) => {
     })
 })
 
+router.post('/selectByName', (req, res, next) => {
+    // ClassCtrl.selectByName(req, res, next)
+    // .then(classroom => {
+    //     res.status(200).json(classroom)
+    // })
+    // .catch(err => {console.log(err)})
+    console.log("entered select classbyname :", req.body.classroomName)
+    ClassCtrl.selectByName(req, res, next)
+    .then(data => {
+        res.status(200).json(data)
+    })
+    .catch(err => {console.log(err)})
+})
+
 router.post('/insert', auth, (req, res, next) => {
     console.log("accessing class insert")
     ClassCtrl.insert(req, res, next)

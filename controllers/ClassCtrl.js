@@ -23,6 +23,19 @@ exports.selectAll = (req, res, next) => {
     })
 }
 
+exports.selectByName = (req, res, next) => {
+    let classroomName = req.body.classroomName
+    return new Promise((resolve, reject) => {
+        Class.findOne({name: classroomName})
+        .then(classroom => {
+            resolve(classroom)
+        })
+        .catch(err => {
+            reject(err)
+        })
+    })
+}
+
 exports.selectById = (req, res, next) => {
     let id = req.body.id
     return new Promise((resolve, reject) => {
