@@ -3,7 +3,7 @@ const router = express.Router()
 const ClassCtrl = require('../controllers/ClassCtrl')
 const auth = require('../middleware/auth').auth
 
-router.get('/selectAll', auth, (req, res, next) => {
+router.get('/selectAll', (req, res, next) => {
     ClassCtrl.selectAll(req, res, next)
     .then(classrooms => {
         res.status(200).json(classrooms)
